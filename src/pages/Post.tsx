@@ -24,9 +24,6 @@ export default function Post() {
 
     return (
         <article className="prose prose-invert max-w-none">
-            <h1 className="mb-4 text-4xl font-bold">
-                {post.title}
-            </h1>
             <header className="mb-10 border-b border-zinc-800 pb-6">
                 <h1 className="text-4xl font-bold tracking-tight">
                     {post.title}

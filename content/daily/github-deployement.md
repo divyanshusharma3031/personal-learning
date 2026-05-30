@@ -1,3 +1,12 @@
+---
+title: First Deployment
+date: 2026-05-31
+tags:
+  - blog
+  - github-pages
+summary: Deployed my personal learning journal.
+---
+
 # Deploying a React + Vite Blog to GitHub Pages
 
 After building my personal learning journal using React, Vite, TypeScript and Tailwind CSS, I wanted a simple way to publish it without managing servers or cloud infrastructure.
@@ -25,17 +34,6 @@ content/
 ```
 
 Each Markdown file contains frontmatter metadata and the article content.
-
-```yaml
----
-title: Workload Identity Federation
-date: 2026-05-30
-tags:
-  - gke
-  - azure
-summary: Removing service principal secrets using workload identity federation.
----
-```
 
 The application discovers these files using Vite's `import.meta.glob()` and renders them dynamically using React.
 
