@@ -13,6 +13,7 @@
   "dependencies": {
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.3.0",
+    "framer-motion": "^12.40.0",
     "front-matter": "^4.0.2",
     "gray-matter": "^4.0.3",
     "react": "^19.2.6",

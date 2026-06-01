@@ -5,7 +5,10 @@ export default function Navbar() {
         <header className="border-b border-zinc-800">
             <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
                 <h1 className="font-bold">
-                    Divyanshu.dev
+                    <Link to="/">
+                        Divyanshu.dev
+                    </Link>
+
                 </h1>
 
                 <nav className="flex gap-6">
