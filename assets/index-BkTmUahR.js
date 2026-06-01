@@ -57,8 +57,7 @@ tags:\r
 summary: Understanding DFS Trees from first principles, including ancestors, descendants, back edges, bridge detection, the dp-based bridge algorithm, and the intuition behind low-link values.\r
 ---\r
 \r
-\r
-# DFS Tree Master Notes (Based on My Template)\r
+# DFS Trees: Intuition, Bridges and Back Edges\r
 \r
 > If I understand the DFS Tree, I can derive the algorithm.\r
 >\r
@@ -66,7 +65,7 @@ summary: Understanding DFS Trees from first principles, including ancestors, des
 \r
 ---\r
 \r
-# The Goal\r
+## The Goal\r
 \r
 When I run DFS on an undirected graph, I am secretly transforming:\r
 \r
@@ -84,34 +83,33 @@ Back Edges\r
 \r
 The DFS Tree is the real object I should think about.\r
 \r
-Most graph problems become easier once viewed through the DFS Tree.\r
+Most graph problems become significantly easier once viewed through the DFS Tree.\r
 \r
 ---\r
 \r
-# DFS Tree Construction\r
+## DFS Tree Construction\r
 \r
 Whenever DFS discovers a new vertex:\r
 \r
 \`\`\`cpp\r
-if(!vis[v])\r
-{\r
+if (!vis[v]) {\r
     dfs(v);\r
 }\r
 \`\`\`\r
 \r
-the edge:\r
+the edge\r
 \r
 \`\`\`text\r
 u - v\r
 \`\`\`\r
 \r
-becomes a Tree Edge.\r
+becomes a **Tree Edge**.\r
 \r
 These tree edges form a rooted tree.\r
 \r
 ---\r
 \r
-# Parent / Child\r
+## Parent and Child\r
 \r
 Whenever DFS goes:\r
 \r
@@ -148,9 +146,9 @@ parent[5] = 4;\r
 \r
 ---\r
 \r
-# Ancestor / Descendant\r
+## Ancestor and Descendant\r
 \r
-Exactly the same as a rooted tree.\r
+Exactly the same definitions as in any rooted tree.\r
 \r
 Example:\r
 \r
@@ -164,7 +162,7 @@ Example:\r
 5\r
 \`\`\`\r
 \r
-Ancestors of 5:\r
+### Ancestors of 5\r
 \r
 \`\`\`text\r
 4\r
@@ -172,7 +170,7 @@ Ancestors of 5:\r
 1\r
 \`\`\`\r
 \r
-Descendants of 2:\r
+### Descendants of 2\r
 \r
 \`\`\`text\r
 4\r
@@ -181,13 +179,11 @@ Descendants of 2:\r
 \r
 ---\r
 \r
-# The Most Important DFS Tree Property\r
+## The Most Important DFS Tree Property\r
 \r
-In an UNDIRECTED graph:\r
+> In an undirected graph, every non-tree edge connects a node with one of its ancestors.\r
 \r
-> Every non-tree edge connects a node with one of its ancestors.\r
-\r
-These edges are called Back Edges.\r
+These edges are called **Back Edges**.\r
 \r
 Example:\r
 \r
@@ -225,7 +221,7 @@ Back edge:\r
 4 --- 1\r
 \`\`\`\r
 \r
-connects\r
+This connects:\r
 \r
 \`\`\`text\r
 descendant -> ancestor\r
@@ -233,7 +229,7 @@ descendant -> ancestor\r
 \r
 ---\r
 \r
-# Why No Cross Edges Exist?\r
+## Why No Cross Edges Exist?\r
 \r
 Suppose:\r
 \r
@@ -243,7 +239,7 @@ Suppose:\r
   2   3\r
 \`\`\`\r
 \r
-and edge:\r
+and the edge\r
 \r
 \`\`\`text\r
 2 --- 3\r
@@ -251,9 +247,9 @@ and edge:\r
 \r
 exists.\r
 \r
-If DFS reaches 2 first, then DFS immediately visits 3.\r
+If DFS reaches 2 first, DFS immediately visits 3.\r
 \r
-Therefore 3 can never become a separate branch.\r
+Therefore, 3 can never become a separate DFS branch.\r
 \r
 Hence:\r
 \r
@@ -265,11 +261,11 @@ ancestor-descendant edge\r
 \r
 always.\r
 \r
-This is the reason DFS Trees are powerful.\r
+This is the reason DFS Trees are so powerful.\r
 \r
 ---\r
 \r
-# My DFS Template\r
+## My DFS Template\r
 \r
 \`\`\`cpp\r
 void dfs(int u, int par)\r
@@ -297,13 +293,13 @@ void dfs(int u, int par)\r
 \r
 ---\r
 \r
-# Meaning Of depth[]\r
+## Meaning of \`depth[]\`\r
 \r
 \`\`\`cpp\r
 depth[v] = depth[u] + 1;\r
 \`\`\`\r
 \r
-Depth inside the DFS Tree.\r
+This stores depth inside the DFS Tree.\r
 \r
 Example:\r
 \r
@@ -319,11 +315,7 @@ Example:\r
 \r
 ---\r
 \r
-# Meaning Of\r
-\r
-\`\`\`cpp\r
-depth[v] < depth[u]\r
-\`\`\`\r
+## Meaning of \`depth[v] < depth[u]\`\r
 \r
 This means:\r
 \r
@@ -361,7 +353,7 @@ is a back edge.\r
 \r
 ---\r
 \r
-# What Does "Passing Over" Mean?\r
+## What Does "Passing Over" Mean?\r
 \r
 Tree:\r
 \r
@@ -401,7 +393,7 @@ Cut the tree:\r
 4\r
 \`\`\`\r
 \r
-Back edge:\r
+The back edge:\r
 \r
 \`\`\`text\r
 4 --- 1\r
@@ -414,13 +406,7 @@ one endpoint above\r
 one endpoint below\r
 \`\`\`\r
 \r
-Therefore:\r
-\r
-\`\`\`text\r
-4 --- 1\r
-\`\`\`\r
-\r
-passes over\r
+Therefore it **passes over**\r
 \r
 \`\`\`text\r
 2 --- 3\r
@@ -428,9 +414,9 @@ passes over\r
 \r
 ---\r
 \r
-# Bridge Intuition\r
+## Bridge Intuition\r
 \r
-Tree edge:\r
+Consider the tree edge:\r
 \r
 \`\`\`text\r
 parent[u]\r
@@ -450,14 +436,14 @@ and\r
 Subtree(u)\r
 \`\`\`\r
 \r
-Question:\r
+The key question is:\r
 \r
-Can a back edge reconnect them?\r
+> Can a back edge reconnect them?\r
 \r
 If YES:\r
 \r
 \`\`\`text\r
-Not Bridge\r
+Not a Bridge\r
 \`\`\`\r
 \r
 If NO:\r
@@ -468,13 +454,9 @@ Bridge\r
 \r
 ---\r
 \r
-# Bridge Characterization\r
+## Bridge Characterization\r
 \r
-A tree edge is a bridge iff:\r
-\r
-\`\`\`text\r
-No back edge passes over it.\r
-\`\`\`\r
+> A tree edge is a bridge iff no back edge passes over it.\r
 \r
 This is the entire bridge algorithm.\r
 \r
@@ -482,9 +464,9 @@ Everything else is implementation.\r
 \r
 ---\r
 \r
-# Understanding dp[]\r
+## Understanding \`dp[]\`\r
 \r
-This is the most important thing in my template.\r
+This is the most important idea in my template.\r
 \r
 Definition:\r
 \r
@@ -536,14 +518,7 @@ because that back edge passes over:\r
 \r
 ---\r
 \r
-# Why\r
-\r
-\`\`\`cpp\r
-dp[u]++;\r
-dp[v]--;\r
-\`\`\`\r
-\r
-Works\r
+## Why \`dp[u]++\` and \`dp[v]--\` Works\r
 \r
 Suppose:\r
 \r
@@ -551,9 +526,7 @@ Suppose:\r
 u ---- v\r
 \`\`\`\r
 \r
-is a back edge.\r
-\r
-Where:\r
+is a back edge where\r
 \r
 \`\`\`text\r
 v is ancestor of u\r
@@ -584,7 +557,7 @@ dp[4]++;\r
 dp[1]--;\r
 \`\`\`\r
 \r
-Then later:\r
+Later:\r
 \r
 \`\`\`cpp\r
 dp[u] += dp[child];\r
@@ -601,17 +574,11 @@ dp[2] = 1\r
 dp[1] = 0\r
 \`\`\`\r
 \r
-Exactly the edges crossed by the back edge.\r
+Exactly the tree edges crossed by the back edge.\r
 \r
 ---\r
 \r
-# Why\r
-\r
-\`\`\`cpp\r
-dp[u] += dp[v];\r
-\`\`\`\r
-\r
-Works\r
+## Why \`dp[u] += dp[v]\` Works\r
 \r
 Every child reports:\r
 \r
@@ -620,7 +587,7 @@ How many back edges\r
 leave my subtree?\r
 \`\`\`\r
 \r
-Parent accumulates all children.\r
+The parent accumulates contributions from all children.\r
 \r
 Eventually:\r
 \r
@@ -632,41 +599,37 @@ becomes:\r
 \r
 \`\`\`text\r
 Number of back edges crossing\r
-(parent[u],u)\r
+(parent[u], u)\r
 \`\`\`\r
 \r
 ---\r
 \r
-# Bridge Condition\r
+## Bridge Condition\r
+\r
+If:\r
 \r
 \`\`\`cpp\r
-if(dp[u] == 0)\r
+dp[u] == 0\r
 \`\`\`\r
 \r
 then:\r
 \r
 \`\`\`text\r
 No back edge crosses\r
-(parent[u],u)\r
+(parent[u], u)\r
 \`\`\`\r
 \r
 Therefore:\r
 \r
 \`\`\`text\r
-(parent[u],u)\r
+(parent[u], u)\r
 \`\`\`\r
 \r
 is a bridge.\r
 \r
 ---\r
 \r
-# Why\r
-\r
-\`\`\`cpp\r
-depth[v] < depth[u]\r
-\`\`\`\r
-\r
-Detects Back Edges\r
+## Why \`depth[v] < depth[u]\` Detects Back Edges\r
 \r
 At node:\r
 \r
@@ -674,7 +637,7 @@ At node:\r
 u\r
 \`\`\`\r
 \r
-If:\r
+if:\r
 \r
 \`\`\`cpp\r
 vis[v]\r
@@ -689,7 +652,7 @@ depth[v] < depth[u]\r
 then:\r
 \r
 \`\`\`text\r
-v is ancestor\r
+v is an ancestor\r
 \`\`\`\r
 \r
 Thus:\r
@@ -702,7 +665,7 @@ is a back edge.\r
 \r
 ---\r
 \r
-# DFS State Interpretation\r
+## DFS State Interpretation\r
 \r
 Useful alternative mental model:\r
 \r
@@ -727,10 +690,10 @@ v is currently on the DFS path\r
 Therefore:\r
 \r
 \`\`\`text\r
-v is ancestor\r
+v is an ancestor\r
 \`\`\`\r
 \r
-and edge:\r
+and\r
 \r
 \`\`\`text\r
 u -> v\r
@@ -740,7 +703,7 @@ is a back edge.\r
 \r
 ---\r
 \r
-# Important Insight\r
+## Important Insight\r
 \r
 The bridge condition:\r
 \r
@@ -754,13 +717,13 @@ and the classical condition:\r
 low[v] > tin[u]\r
 \`\`\`\r
 \r
-are checking the same thing.\r
+are checking exactly the same thing.\r
 \r
 Both ask:\r
 \r
 \`\`\`text\r
 Does any back edge pass over\r
-(parent[v],v)?\r
+(parent[v], v)?\r
 \`\`\`\r
 \r
 Difference:\r
@@ -783,7 +746,7 @@ Different implementation.\r
 \r
 ---\r
 \r
-# Problems Where DFS Tree Is The Real Solution\r
+## Problems Where the DFS Tree Is the Real Solution\r
 \r
 1. Bridges\r
 2. Articulation Points\r
@@ -798,17 +761,17 @@ Different implementation.\r
 \r
 ---\r
 \r
-# Final Mental Model\r
+## Final Mental Model\r
 \r
 Whenever I see a graph problem:\r
 \r
-DO NOT THINK:\r
+### Do NOT Think\r
 \r
 \`\`\`text\r
 Graph\r
 \`\`\`\r
 \r
-THINK:\r
+### Think\r
 \r
 \`\`\`text\r
 DFS Tree\r
@@ -816,8 +779,7 @@ DFS Tree\r
 Ancestor-Descendant Edges\r
 \`\`\`\r
 \r
-Most structural graph problems become much easier after this transformation.\r
-`,Ep=`---\r
+Most structural graph problems become dramatically easier after this transformation.`,Ep=`---\r
 title: Workload Identity Federation\r
 date: 2026-05-30\r
 category: cloud\r
