@@ -4,13 +4,14 @@ title: Anton and Tree - Component Compression and Tree Diameter
 date: 2026-06-07
 tags:
 
-* trees
-* diameter
-* dsu
-* graph-theory
-* codeforces
-* competitive-programming
-  summary: A beautiful problem where color components are compressed into a new tree, reducing the task to finding the diameter and answering ceil(diameter / 2).
+- trees
+- diameter
+- dsu
+- graph-theory
+- codeforces
+- competitive-programming
+
+summary: A beautiful problem where color components are compressed into a new tree, reducing the task to finding the diameter and answering ceil(diameter / 2).
 
 ---
 
