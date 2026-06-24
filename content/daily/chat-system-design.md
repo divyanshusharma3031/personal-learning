@@ -1,4 +1,3 @@
-````md
 ---
 title: Billion Scale Chat System Design (Final Stream-First Architecture)
 date: 2026-06-04
@@ -431,6 +430,3 @@ This architecture is optimized for:
 The most important insight:
 
 > Moving from request-driven architecture to stream-driven architecture fundamentally changes how scaling is achieved — from “database scaling” to “event processing scaling”.
-
-```
-```
