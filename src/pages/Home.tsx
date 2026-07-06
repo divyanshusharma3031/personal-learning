@@ -11,7 +11,6 @@ export default function Home() {
         new Date(a.date).getTime()
     )
     .slice(0, 4);
-
   return (
     <>
       <motion.section
