@@ -48,7 +48,7 @@ Light weight pushed based event routing service designed for reactive, pub-sub p
 
 3) Message contain state change ( the "what" ).
 
-4) Messages are not persieted.
+4) Messages are not persisted.
 
 5) No strict ordering 
 
