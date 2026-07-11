@@ -2147,7 +2147,9 @@ Image Describing Event Grid :\r
 \r
 Some Important Terminologies :\r
 \r
-1) Event - An Event is the actual message that something happened.\r
+# 1.Event\r
+\r
+An Event is the actual message that something happened.\r
 \r
     Examples:\r
     - Blob Created( Systen Generated)\r
@@ -2166,7 +2168,9 @@ Some Important Terminologies :\r
     }\r
     \`\`\`\r
 \r
-2) Topic - This is the end point where the events are sent/ published.\r
+# 2.Topic \r
+\r
+This is the end point where the events are sent/ published.\r
 \r
 Many events can be in the same topic .\r
 \r
@@ -2201,7 +2205,8 @@ Azure publishes → System Topic\r
 \r
 Your application publishes → Custom Topic\r
 \r
-3) Event Subsciption - This is not your typical Azure subscription.\r
+# 3.Event Subsciption  \r
+This is not your typical Azure subscription.\r
 Not a Code , Not a Listener.\r
 \r
 It is simply just a Routing configuration inside event Grid.\r
@@ -2235,108 +2240,6 @@ Does this subscription match?\r
 If yes, it forwards the event.\r
 \r
 \r
-4) Event Handler \r
-\r
-An Event Handler is the destination that actually receives the event.\r
-\r
-Examples - Azure Function , Logic App, WebHook,etc\r
-\r
-# Azure Event Grid\r
-\r
-\r
-What is event Grid ?\r
-\r
-Light weight pushed based event routing service designed for reactive, pub-sub programming .\r
-In simplere terms , it is an event **routing** service.\r
-\r
-Whenever an Event Happens , the subscribers gets notified.\r
-\r
-### Purpose\r
-It is used to build Serverless event driven Architecture.\r
-\r
-\r
-Image Describing Event Grid :\r
-\r
-\r
-\r
-\r
-Some Important Terminologies :\r
-\r
-1) Event - An Event is the actual message that something happened.\r
-\r
-    Examples:\r
-    - Blob Created( Systen Generated)\r
-    - Blob Deleted ( System Generated)\r
-    - OrderCreated ( Custom)\r
-\r
-\r
-2) Topic - This is the end point where the events are sent/ published.\r
-\r
-Many events can be in the same topic .\r
-\r
-Flow is like this :\r
-\r
-Event Publisher ------> Event Created ----> Topic \r
-\r
-\r
-## System Topics V/s Custom Topic\r
-\r
-**System Topic:**\r
-\r
-- Created and managed by Azure by default \r
-- In this Publisher is an Azure service.\r
-- Used for Azure resources.\r
-\r
-For example : Azure Resource Group , Storage Account , Key vault.\r
-\r
-**Custom Topic:**\r
-\r
-- Created by Your service .\r
-- You create the Topic\r
-- Used for Busioness Events.\r
-\r
-*Example* :\r
-\r
-OrderService ---> OrderCreated---->Custom Topic ---> Event Grid.\r
-\r
-In summary ,\r
-\r
-Azure publishes → System Topic\r
-\r
-Your application publishes → Custom Topic\r
-\r
-3) Event Subsciption - This is not your typical Azure subscription.\r
-Not a Code , Not a Listener.\r
-\r
-It is simply just a Routing configuration inside event Grid.\r
-\r
-It looks Like this -\r
-\r
-\r
-Source - From where it originated\r
-\r
-Event types - Which type of event you want on source( BlobCreated,Blob deleted etc in case of storage Account)\r
-\r
-Filters - Any Filter ( Any type of filter)\r
-\r
-Destination (event handler)- The actual processor\r
-\r
-Retry policy- How many times to retry sending just in case Destination is unavailable.\r
-\r
-Dead-letter destination (optional)- Suppose the Azure Function stays unavailable long enough that all retries are exhausted.\r
-Without a dead-letter destination, the events will get lost .\r
-\r
-With a dead-letter destination configured,\r
-\r
-The undelivered event is stored so you can inspect it and potentially replay or process it later.\r
-\r
-## Important \r
-\r
-When an event arrives, **Event Grid checks all subscriptions**(all subscriptions are checked event grid sends the event , subscribers are not listening to event Grid.):\r
-\r
-Does this subscription match?\r
-\r
-If yes, it forwards the event.\r
 \r
 \r
 # 4. Event Handler\r
