@@ -28,7 +28,7 @@ Image Describing Event Grid :
 
 
 
-
+![Azure Event Grid](blog/eventGrid/eventDrivenDiagram.png)
 
 
 Some Important Terminologies :
@@ -449,3 +449,61 @@ Event Grid handles routing.
 Handlers perform business logic.
 
 Service Bus can be used as a handler when reliable, durable processing is required.
+
+
+
+## Event Grid is a Managed Service
+
+One important thing to understand is that **Azure Event Grid is not a physical Azure resource that you provision or own**. Instead, it is a **fully managed event routing service** provided by Azure.
+
+Unlike services such as **Service Bus**, **Storage Accounts**, or **Logic Apps**, you never create an "Event Grid" instance.
+
+### What you create
+
+Instead of creating Event Grid itself, you create resources that use the Event Grid service:
+
+- **Custom Topic**
+- **Event Subscription**
+
+For example, when creating a **Custom Topic**, you specify the **Resource Group** where that topic should reside.
+
+> **Remember:** The **Topic** is an Azure resource. **Event Grid** is the managed service that routes events.
+
+---
+
+### A common misconception
+
+You never say:
+
+> "Create an Event Grid."
+
+Instead, you say:
+
+- "Create a Custom Topic."
+- "Create an Event Subscription."
+
+Behind the scenes, Azure's **Event Grid service** is responsible for receiving events, evaluating all matching **Event Subscriptions**, and routing those events to the configured **Event Handlers**.
+
+---
+
+### Mental Model
+
+```text
+                Azure Event Grid Service
+                         │
+         (Managed by Microsoft Azure)
+                         │
+        ┌────────────────┴────────────────┐
+        │                                 │
+  Custom Topic                   System Topic
+        │                                 │
+        └──────────────┬──────────────────┘
+                       │
+               Event Subscription
+                       │
+                       ▼
+                Event Handler
+      (Logic App / Function / Service Bus)
+```
+
+The key takeaway is that **Event Grid is the routing engine**, while **Topics** and **Event Subscriptions** are the Azure resources you create and manage.

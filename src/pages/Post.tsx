@@ -6,6 +6,8 @@ import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
 import { getReadingTime } from "../utils/getReadingTime";
 import { formatDate } from "../utils/formatDate";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
 export default function Post() {
     const { category, slug } = useParams();
 
@@ -64,7 +66,7 @@ export default function Post() {
             </header>
             <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
-                rehypePlugins={[rehypeHighlight]}
+                rehypePlugins={[rehypeHighlight,rehypeSlug,rehypeAutolinkHeadings]}
             >
                 {post.content}
             </ReactMarkdown>
