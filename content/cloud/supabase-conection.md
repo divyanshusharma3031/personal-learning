@@ -1,16 +1,15 @@
 ---
 
-title: Supabase PostgreSQL Connection: IPv6, Pooler and Persistent Connections
+title: Supabase PostgreSQL Connection- IPv6, Pooler and Persistent Connections
 date: 2026-08-23
+category: cloud
 tags:
-
-- backend
-- postgresql
-- supabase
-- drizzle
-- nodejs
-- networking
-
+    - backend
+    - postgresql
+    - supabase
+    - drizzle
+    - nodejs
+    - networking
 summary: Understanding Supabase direct connections, IPv6 DNS resolution, connection pooling, and why a Node.js database client can keep a process alive.
 
 ---
