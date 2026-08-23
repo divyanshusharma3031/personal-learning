@@ -2790,17 +2790,16 @@ You can configure then By adding your webhook url here like this :\r
 \r
 ![WebHook Configuration](blog/eventGrid/event_subscription_webHook_endpoint.png)`,Mp=`---\r
 \r
-title: Supabase PostgreSQL Connection: IPv6, Pooler and Persistent Connections\r
+title: Supabase PostgreSQL Connection- IPv6, Pooler and Persistent Connections\r
 date: 2026-08-23\r
+category: cloud\r
 tags:\r
-\r
-- backend\r
-- postgresql\r
-- supabase\r
-- drizzle\r
-- nodejs\r
-- networking\r
-\r
+    - backend\r
+    - postgresql\r
+    - supabase\r
+    - drizzle\r
+    - nodejs\r
+    - networking\r
 summary: Understanding Supabase direct connections, IPv6 DNS resolution, connection pooling, and why a Node.js database client can keep a process alive.\r
 \r
 ---\r
